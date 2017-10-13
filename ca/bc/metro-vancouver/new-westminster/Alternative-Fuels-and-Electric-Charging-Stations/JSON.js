@@ -1,19 +1,28 @@
-// Declare variables
+/*This file was created for Terratap-Technologies-Inc by Cody Clattenburg, Sam Collins, Martin Suryadi, and Sergio Josue Villegas. This file is under the protection of the Apache 2.0 License.*/
+/*Declare variables*/
 var fs = require('fs');
 var obj;
 var inputPath = 'in.json';
 var outputPath = 'out.json';
+var prettyPrint = 0; /*Setting this to 1 or TRUE formats the output with indentation.*/
+var ppNL = '';
+var ppTB = '';
 
-// Read the file and send to the callback
+/*Read the file and send to the callback*/
 fs.readFile(inputPath, handleFile)
 
-// Write the callback function
+/*Write the callback function*/
 function handleFile(err, data) {
 
     if (err) throw err
     obj = JSON.parse(data);
 
-    // Convert Data Here
+    if (prettyPrint == 1) {
+      ppNL = '\n';
+      ppTB = '\t';
+    }
+
+    /*Convert Data Here*/
     for (var i = 0; i < obj.length; i++) {
       if (obj[i].Access == 'Publically Accessible - Free') {
         obj[i].Access = 'Public';
@@ -25,25 +34,31 @@ function handleFile(err, data) {
       }
     }
 
-    // Re-Parse Data Here
-    var content = '[';
+    /*Re-Parse Data Here*/
+    var content = '[' + ppNL;
     for (var i = 0; i < obj.length; i++) {
-      content += '{"type": "Feature","geometry": {"type": "Point","coordinates":'
-      + '[' + obj[i].X + ', ' + obj[i].Y + ']'
-      + '},"properties": {';
+      content += '{'
+      + ppNL + ppTB + '"type": "Feature"'
+      + ppNL + ppTB + ',"geometry": {'
+      + ppNL + ppTB + ppTB + '"type": "Point"'
+      + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].X + ', ' + obj[i].Y + ']'
+      + ppNL + ppTB + '}'
+      + ppNL + ppTB + ',"properties": ';
 
-      content += '"fuelType": "' + obj[i].Fuel + '",'; /*required*/
+      content += '{'
+      + ppNL + ppTB + ppTB + '"fuelType": "' + obj[i].Fuel + '"'
+      + ppNL + ppTB + ppTB + ',' + '"name": "' + obj[i].Name + '"'
+      + ppNL + ppTB + ppTB + ',' + '"address": "' + obj[i].Location + '"'
+      + ppNL + ppTB + ppTB + ',' + '"access": "' + obj[i].Access + '"'
+      + ppNL + ppTB + '}'
+      + ppNL + '}';
 
-      content += '"name": "' + obj[i].Name + '",';
-      content += '"address": "' + obj[i].Location + '",';
-      content += '"access": "' + obj[i].Access + '"';
-
-      content += '}}';
       if (i < obj.length - 1) {
-        content += ',';
+        content += ppNL + ',';
       }
     }
-    content += ']';
+    content += ppNL + ']';
+
     fs.writeFile(outputPath, content, 'utf8', function (err) {
       if (err) {
           return console.log(err);
