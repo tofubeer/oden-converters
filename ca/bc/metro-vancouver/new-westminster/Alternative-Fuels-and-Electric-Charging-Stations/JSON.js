@@ -41,7 +41,7 @@ function handleFile(err, data) {
       + ppNL + ppTB + '"type": "Feature"'
       + ppNL + ppTB + ',"geometry": {'
       + ppNL + ppTB + ppTB + '"type": "Point"'
-      + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].X + ', ' + obj[i].Y + ']'
+      + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].Y + ', ' + obj[i].X + ']'
       + ppNL + ppTB + '}'
       + ppNL + ppTB + ',"properties": ';
 
