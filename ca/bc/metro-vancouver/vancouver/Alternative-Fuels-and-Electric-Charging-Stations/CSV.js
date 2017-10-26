@@ -1,5 +1,7 @@
 /*This file was created for Terratap-Technologies-Inc by Cody Clattenburg, Sam Collins, Martin Suryadi, and Sergio Josue Villegas. This file is under the protection of the Apache 2.0 License.*/
-/*Declare variables*/
+/*VANCOUVER - ALTERNATIVE FUEL STATIONS*/
+
+/*Declare Variables*/
 var fs = require('fs');
 var obj;
 var inputPath = 'in.csv';
@@ -30,9 +32,29 @@ function handleFile(err, data) {
       obj[i].FUEL = 'Electric';
     }
 
-    /*Re-Parse Data Here*/
+    /*Default Override*/
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].ADDRESS == "")
+      obj[i].ADDRESS = "Address Unavailable";
+    }
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].LOT_OPERATOR == "")
+      obj[i].LOT_OPERATOR = "Name Unavailable";
+    }
+
+    /*Writing Loop*/
     var content = '[' + ppNL;
     for (var i = 0; i < obj.length; i++) {
+
+      /*CSV Newline Fix*/
+      if (obj[i].LONGITUDE == undefined) {
+        while (content.slice(-1) == '\n' || content.slice(-1) == ',') {
+          content = content.slice(0, -1);
+        }
+        continue;
+      }
+
+      /*Write to out.json*/
       content += '{'
       + ppNL + ppTB + '"type": "Feature"'
       + ppNL + ppTB + ',"geometry": {'
@@ -55,24 +77,34 @@ function handleFile(err, data) {
     }
     content += ppNL + ']';
 
+    /*Save File*/
     fs.writeFile(outputPath, content, 'utf8', function (err) {
       if (err) {
           return console.log(err);
       }
 
+      /*Print File Status*/
       console.log("The file was converted!");
     });
 }
 
-//CSV to JSON
+/*CSV to JSON Function*/
 function csvJSON(csv) {
 
+  /*Remove Quotations*/
+  var p = csv.search('\"');
+  while(p != -1) {
+    csv = csv.slice(0, p) + csv.slice(p + 1, csv.length);
+    p = csv.search('\"');
+  }
+
+  /*Split into Array*/
   var lines = csv.split('\r\n');
   var result = [];
   var headers = lines[0].split(',');
   headers[3] = 'ADDRESS'
 
-
+  /*Parse CSV to JSON*/
   for(var i = 1;i < lines.length; i++) {
 	  var obj = {};
 	  var currentline = lines[i].split(',');
