@@ -68,11 +68,11 @@ function handleFile(err, data) {
       + ppNL + ppTB + ',"properties": ';
 
       content += '{'
-      + ppNL + ppTB + ppTB + '"name": "' + obj[i].TITLE + '"'
-      + ppNL + ppTB + ppTB + ',' + '"artist": "' + obj[i].ARTIST_NAME + '"'
-      + ppNL + ppTB + ppTB + ',' + '"summary": "' + obj[i].AT_A_GLANCE + '"'
-      + ppNL + ppTB + ppTB + ',' + '"description": "' + obj[i].DESCRIPTION + '"'
-      + ppNL + ppTB + ppTB + ',' + '"address": "' + obj[i].INSTALLATION_ADDRESS + '"'
+      + ppNL + ppTB + ppTB + '"nm": "' + obj[i].TITLE + '"'
+      + ppNL + ppTB + ppTB + ',' + '"aNm": "' + obj[i].ARTIST_NAME + '"'
+      + ppNL + ppTB + ppTB + ',' + '"summ": "' + obj[i].AT_A_GLANCE + '"'
+      + ppNL + ppTB + ppTB + ',' + '"desc": "' + obj[i].DESCRIPTION + '"'
+      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].INSTALLATION_ADDRESS + '"'
       + ppNL + ppTB + '}'
       + ppNL + '}';
 

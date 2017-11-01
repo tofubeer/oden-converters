@@ -1,4 +1,6 @@
 /*This file was created for Terratap-Technologies-Inc by Cody Clattenburg, Sam Collins, Martin Suryadi, and Sergio Josue Villegas. This file is under the protection of the Apache 2.0 License.*/
+/*VANCOUVER - VOTING LOCATIONS*/
+
 /*Declare variables*/
 var fs = require('fs');
 var obj;
@@ -40,8 +42,8 @@ function handleFile(err, data) {
       + ppNL + ppTB + ',"properties": ';
 
       content += '{'
-      + ppNL + ppTB + ppTB + '"name": "' + obj[i].FACILITY_NAME + '"'
-      + ppNL + ppTB + ppTB + ',' + '"address": "' + obj[i].FACILITY_ADDRESS + ' (' + obj[i].ADDRESS + ')' + '"'
+      + ppNL + ppTB + ppTB + '"nm": "' + obj[i].FACILITY_NAME + '"'
+      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].FACILITY_ADDRESS + ' (' + obj[i].ADDRESS + ')' + '"'
       + ppNL + ppTB + '}'
       + ppNL + '}';
 

@@ -64,10 +64,10 @@ function handleFile(err, data) {
       + ppNL + ppTB + ',"properties": ';
 
       content += '{'
-      + ppNL + ppTB + ppTB + '"fuelType": "' + obj[i].FUEL + '"'
-      + ppNL + ppTB + ppTB + ',' + '"name": "' + obj[i].LOT_OPERATOR + '"'
-      + ppNL + ppTB + ppTB + ',' + '"address": "' + obj[i].ADDRESS + '"'
-      + ppNL + ppTB + ppTB + ',' + '"access": "' + obj[i].ACCESS + '"'
+      + ppNL + ppTB + ppTB + '"fT": "' + obj[i].FUEL + '"'
+      + ppNL + ppTB + ppTB + ',' + '"nm": "' + obj[i].LOT_OPERATOR + '"'
+      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].ADDRESS + '"'
+      + ppNL + ppTB + ppTB + ',' + '"ac": "' + obj[i].ACCESS + '"'
       + ppNL + ppTB + '}'
       + ppNL + '}';
 

@@ -1,4 +1,6 @@
 /*This file was created for Terratap-Technologies-Inc by Cody Clattenburg, Sam Collins, Martin Suryadi, and Sergio Josue Villegas. This file is under the protection of the Apache 2.0 License.*/
+/*SURREY - ALTERNATIVE FUEL STATIONS*/
+
 /*Declare variables*/
 var fs = require('fs');
 var obj;
@@ -41,10 +43,10 @@ function handleFile(err, data) {
       + ppNL + ppTB + ',"properties": ';
 
       content += '{'
-      + ppNL + ppTB + ppTB + '"fuelType": "' + obj[i].FUEL + '"'
-      + ppNL + ppTB + ppTB + ',' + '"name": "' + obj[i].NAME + '"'
-      + ppNL + ppTB + ppTB + ',' + '"address": "' + obj[i].LOCATION + '"'
-      + ppNL + ppTB + ppTB + ',' + '"access": "' + obj[i].ACCESS + '"'
+      + ppNL + ppTB + ppTB + '"fT": "' + obj[i].FUEL + '"'
+      + ppNL + ppTB + ppTB + ',' + '"nm": "' + obj[i].NAME + '"'
+      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].LOCATION + '"'
+      + ppNL + ppTB + ppTB + ',' + '"ac": "' + obj[i].ACCESS + '"'
       + ppNL + ppTB + '}'
       + ppNL + '}';
 

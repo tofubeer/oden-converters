@@ -1,4 +1,6 @@
 /*This file was created for Terratap-Technologies-Inc by Cody Clattenburg, Sam Collins, Martin Suryadi, and Sergio Josue Villegas. This file is under the protection of the Apache 2.0 License.*/
+/*NEW WESTMINSTER - ALTERNATIVE FUEL STATIONS*/
+
 /*Declare variables*/
 var fs = require('fs');
 var obj;
@@ -46,10 +48,10 @@ function handleFile(err, data) {
       + ppNL + ppTB + ',"properties": ';
 
       content += '{'
-      + ppNL + ppTB + ppTB + '"fuelType": "' + obj[i].Fuel + '"'
-      + ppNL + ppTB + ppTB + ',' + '"name": "' + obj[i].Name + '"'
-      + ppNL + ppTB + ppTB + ',' + '"address": "' + obj[i].Location + '"'
-      + ppNL + ppTB + ppTB + ',' + '"access": "' + obj[i].Access + '"'
+      + ppNL + ppTB + ppTB + '"fT": "' + obj[i].Fuel + '"'
+      + ppNL + ppTB + ppTB + ',' + '"nm": "' + obj[i].Name + '"'
+      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].Location + '"'
+      + ppNL + ppTB + ppTB + ',' + '"ac": "' + obj[i].Access + '"'
       + ppNL + ppTB + '}'
       + ppNL + '}';
 
