@@ -34,6 +34,10 @@ function handleFile(err, data) {
       obj[i].ARTIST_NAME = "Artist Name Unavailable";
   }
   for (var i = 0; i < obj.length; i++) {
+    //if (obj[i].MEDIUM == "")
+      obj[i].MEDIUM = "Art Type Unavailable";
+  }
+  for (var i = 0; i < obj.length; i++) {
     if (obj[i].summary == "")
       obj[i].summary = obj[i].Descriptn;
     if (obj[i].summary == "")
@@ -81,6 +85,7 @@ function handleFile(err, data) {
     content += '{'
     + ppNL + ppTB + ppTB + '"nm": "' + obj[i].Name + '"'
     + ppNL + ppTB + ppTB + ',' + '"aNm": "' + obj[i].ARTIST_NAME + '"'
+    + ppNL + ppTB + ppTB + ',' + '"type": "' + obj[i].MEDIUM + '"'
     + ppNL + ppTB + ppTB + ',' + '"summ": "' + obj[i].summary + '"'
     + ppNL + ppTB + ppTB + ',' + '"desc": "' + obj[i].Descriptn + '"'
     + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].Address + '"'

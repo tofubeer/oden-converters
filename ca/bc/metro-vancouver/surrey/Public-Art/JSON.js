@@ -38,6 +38,10 @@ function handleFile(err, data) {
       obj[i].ARTIST_NAME = obj[i].ARTIST_NAME.slice(0, obj[i].ARTIST_NAME.search("<div>"));
     }
     for (var i = 0; i < obj.length; i++) {
+      //if (obj[i].MEDIUM == "")
+        obj[i].MEDIUM = "Art Type Unavailable";
+    }
+    for (var i = 0; i < obj.length; i++) {
       //if (obj[i].SUMMARY == "")
       obj[i].SUMMARY = "Summary Unavailable";
     }
@@ -78,6 +82,7 @@ function handleFile(err, data) {
       content += '{'
       + ppNL + ppTB + ppTB + '"nm": "' + obj[i].ARTWORK + '"'
       + ppNL + ppTB + ppTB + ',' + '"aNm": "' + obj[i].ARTIST_NAME + '"'
+      + ppNL + ppTB + ppTB + ',' + '"type": "' + obj[i].MEDIUM + '"'
       + ppNL + ppTB + ppTB + ',' + '"summ": "' + obj[i].SUMMARY + '"'
       + ppNL + ppTB + ppTB + ',' + '"desc": "' + obj[i].DESCRIPTION + '"'
       + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].LOCATION + '"'

@@ -1,5 +1,5 @@
 /*This file was created for Terratap-Technologies-Inc by Cody Clattenburg, Sam Collins, Martin Suryadi, and Sergio Josue Villegas. This file is under the protection of the Apache 2.0 License.*/
-/*EDMONTON - PUBLIC ART*/
+/*VANCOUVER - PUBLIC ART*/
 
 /*Declare Variables*/
 var fs = require('fs');
@@ -26,28 +26,28 @@ function handleFile(err, data) {
 
     /*Default Override*/
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].TITLE == "")
-        obj[i].TITLE = "Name Unavailable";
+      if (obj[i].Title == "")
+        obj[i].Title = "Name Unavailable";
     }
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].ARTIST_NAME == "")
+      //if (obj[i].ARTIST_NAME == "")
         obj[i].ARTIST_NAME = "Artist Name Unavailable";
     }
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].MEDIUM == "")
+      //if (obj[i].MEDIUM == "")
         obj[i].MEDIUM = "Art Type Unavailable";
     }
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].AT_A_GLANCE == "")
+      //if (obj[i].AT_A_GLANCE == "")
         obj[i].AT_A_GLANCE = "Summary Unavailable";
     }
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].DESCRIPTION == "")
+      //if (obj[i].DESCRIPTION == "")
         obj[i].DESCRIPTION = "Description Unavailable";
     }
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].INSTALLATION_ADDRESS == "")
-        obj[i].INSTALLATION_ADDRESS = "Address Unavailable";
+      if (obj[i].Address == "")
+        obj[i].Address = "Address Unavailable";
     }
 
     /*Writing Loop*/
@@ -55,7 +55,7 @@ function handleFile(err, data) {
     for (var i = 0; i < obj.length; i++) {
 
       /*CSV Newline Fix*/
-      if (obj[i].LONGITUDE == undefined) {
+      if (obj[i].X == undefined) {
         while (content.slice(-1) == '\n' || content.slice(-1) == ',') {
           content = content.slice(0, -1);
         }
@@ -67,17 +67,17 @@ function handleFile(err, data) {
       + ppNL + ppTB + '"type": "Feature"'
       + ppNL + ppTB + ',"geometry": {'
       + ppNL + ppTB + ppTB + '"type": "Point"'
-      + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].LATITUDE + ', ' + obj[i].LONGITUDE + ']'
+      + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].Y + ', ' + obj[i].X + ']'
       + ppNL + ppTB + '}'
       + ppNL + ppTB + ',"properties": ';
 
       content += '{'
-      + ppNL + ppTB + ppTB + '"nm": "' + obj[i].TITLE + '"'
+      + ppNL + ppTB + ppTB + '"nm": "' + obj[i].Title + '"'
       + ppNL + ppTB + ppTB + ',' + '"aNm": "' + obj[i].ARTIST_NAME + '"'
       + ppNL + ppTB + ppTB + ',' + '"type": "' + obj[i].MEDIUM + '"'
       + ppNL + ppTB + ppTB + ',' + '"summ": "' + obj[i].AT_A_GLANCE + '"'
       + ppNL + ppTB + ppTB + ',' + '"desc": "' + obj[i].DESCRIPTION + '"'
-      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].INSTALLATION_ADDRESS + '"'
+      + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].Address + '"'
       + ppNL + ppTB + '}'
       + ppNL + '}';
 
@@ -101,12 +101,12 @@ function handleFile(err, data) {
 /*CSV to JSON Function*/
 function csvJSON(csv) {
 
-  /*Remove Quotations & Commas*/
-  var inQuote = 0;
+  /*Remove Quotations & Commas(Commented out since homebrew dataset)*/
+  /*var inQuote = 0;
   for (var i = 0; i < csv.length; i++) {
     if (csv[i] == '\"') {
       csv = csv.slice(0, i) + csv.slice(i + 1, csv.length);
-      inQuote = inQuote * -1 + 1; /*Toggle in-Quote*/
+      inQuote = inQuote * -1 + 1;
       i--;
       continue;
     }
@@ -120,7 +120,7 @@ function csvJSON(csv) {
       i--;
       continue;
     }
-  }
+  }*/
 
   /*Split into Array*/
   var lines = csv.split('\n');
