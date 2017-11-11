@@ -65,6 +65,27 @@ function handleFile(err, data) {
 //CSV to JSON
 function csvJSON(csv) {
 
+  /*Remove Quotations & Commas*/
+  var inQuote = 0;
+  for (var i = 0; i < csv.length; i++) {
+    if (csv[i] == '\"') {
+      csv = csv.slice(0, i) + csv.slice(i + 1, csv.length);
+      inQuote = inQuote * -1 + 1; /*Toggle in-Quote*/
+      i--;
+      continue;
+    }
+    if (csv[i] == ',' && inQuote == 1) {
+      csv = csv.slice(0, i) + csv.slice(i + 1, csv.length);
+      i--;
+      continue;
+    }
+    if (i < csv.length - 1 && inQuote == 0 && csv[i] == ',' && csv[i + 1] == ' ') {
+      csv = csv.slice(0, i + 1) + csv.slice(i + 2, csv.length);
+      i--;
+      continue;
+    }
+  }
+
   var lines = csv.split('\r\n');
   var result = [];
   var headers = lines[0].split(',');
