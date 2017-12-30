@@ -30,6 +30,16 @@ function handleFile(err, data) {
         obj[i].ACCESS = 'Public';
       }
     }
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].FUEL == 'Electric (240 Volt)') {
+        obj[i].FUEL = 'EV Level 2';
+      }
+    }
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].FUEL == 'DC Fast Charge (DCFC)') {
+        obj[i].FUEL = 'EV Level 3(DCFC)';
+      }
+    }
 
     /*Re-Parse Data Here*/
     var content = '[' + ppNL;

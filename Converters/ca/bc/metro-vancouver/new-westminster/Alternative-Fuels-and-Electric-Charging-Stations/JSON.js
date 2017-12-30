@@ -13,6 +13,29 @@ var ppTB = '';
 /*Read the file and send to the callback*/
 fs.readFile(inputPath, handleFile)
 
+function parseObject(Y, X, Fuel, Name, Location, Access, Flag) {
+  var content = "";
+  content += '{'
+  + ppNL + ppTB + '"type": "Feature"'
+  + ppNL + ppTB + ',"geometry": {'
+  + ppNL + ppTB + ppTB + '"type": "Point"'
+  + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + Y + ', ' + X + ']'
+  + ppNL + ppTB + '}'
+  + ppNL + ppTB + ',"properties": ';
+
+  content += '{'
+  + ppNL + ppTB + ppTB + '"fT": "' + Fuel + '"'
+  + ppNL + ppTB + ppTB + ',' + '"nm": "' + Name + '"'
+  + ppNL + ppTB + ppTB + ',' + '"adr": "' + Location + '"'
+  + ppNL + ppTB + ppTB + ',' + '"ac": "' + Access + '"'
+  + ppNL + ppTB + '}'
+  + ppNL + '}';
+  if (Flag == 1) {
+    content += ppNL + ',';
+  }
+  return content;
+}
+
 /*Write the callback function*/
 function handleFile(err, data) {
 
@@ -31,14 +54,47 @@ function handleFile(err, data) {
       }
     }
     for (var i = 0; i < obj.length; i++) {
-      if (obj[i].Fuel == 'Diesel, Propane, Gas and Semacharge EV Level 2') {
-        obj[i].Fuel = 'Semacharge EV Level 2';
+      if (obj[i].Access == 'Available for patrons only - Free') {
+        obj[i].Access = 'Members Only';
+      }
+    }
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].Fuel == 'Semacharge EV Level 2') {
+        obj[i].Fuel = 'EV Level 2';
+        obj[i].Access = 'Semacharge Required';
+      }
+    }
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].Fuel == 'Tesla EV Level 2') {
+        obj[i].Fuel = 'EV Level 2(Tesla Only)';
       }
     }
 
     /*Re-Parse Data Here*/
     var content = '[' + ppNL;
     for (var i = 0; i < obj.length; i++) {
+
+      /*Special Case for Multiple Types*/
+      if (obj[i].Fuel == 'Diesel, Propane, Gas and Semacharge EV Level 2') {
+        content += parseObject(obj[i].Y, obj[i].X, 'Diesel', obj[i].Name, obj[i].Location, obj[i].Access, 1);
+        content += parseObject(obj[i].Y, obj[i].X, 'Propane', obj[i].Name, obj[i].Location, obj[i].Access, 1);
+        content += parseObject(obj[i].Y, obj[i].X, 'Gas', obj[i].Name, obj[i].Location, obj[i].Access, 1);
+        content += parseObject(obj[i].Y, obj[i].X, 'EV Level 2', obj[i].Name, obj[i].Location, obj[i].Access, 0);
+        if (i < obj.length - 1) {
+          content += ppNL + ',';
+        }
+        continue;
+      }
+      if (obj[i].Fuel == 'EV Level 1, EV Level 2') {
+        content += parseObject(obj[i].Y, obj[i].X, 'EV Level 1', obj[i].Name, obj[i].Location, obj[i].Access, 1);
+        content += parseObject(obj[i].Y, obj[i].X, 'EV Level 2', obj[i].Name, obj[i].Location, obj[i].Access, 0);
+        if (i < obj.length - 1) {
+          content += ppNL + ',';
+        }
+        continue;
+      }
+      /*Special Case for Multiple Types*/
+
       content += '{'
       + ppNL + ppTB + '"type": "Feature"'
       + ppNL + ppTB + ',"geometry": {'

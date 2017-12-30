@@ -38,6 +38,10 @@ function handleFile(err, data) {
         obj[i].MEDIUM = "Art Type Unavailable";
     }
     for (var i = 0; i < obj.length; i++) {
+      if (obj[i].MEDIUM == "mural")
+        obj[i].MEDIUM = "Mural";
+    }
+    for (var i = 0; i < obj.length; i++) {
       if (obj[i].AT_A_GLANCE == "")
         obj[i].AT_A_GLANCE = "Summary Unavailable";
     }

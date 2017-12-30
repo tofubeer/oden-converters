@@ -18,6 +18,7 @@ function handleFile(err, data) {
 
   if (err) throw err
   obj = JSON.parse(data);
+  obj = obj.features;
 
   if (prettyPrint == 1) {
     ppNL = '\n';
@@ -26,39 +27,39 @@ function handleFile(err, data) {
 
   /*Default Override*/
   for (var i = 0; i < obj.length; i++) {
-    if (obj[i].Name == "")
-      obj[i].Name = "Name Unavailable";
+    if (obj[i].properties.Name == "")
+      obj[i].properties.Name = "Name Unavailable";
   }
   for (var i = 0; i < obj.length; i++) {
-    //if (obj[i].ARTIST_NAME == "")
-      obj[i].ARTIST_NAME = "Artist Name Unavailable";
+    //if (obj[i].properties.ARTIST_NAME == "")
+      obj[i].properties.ARTIST_NAME = "Artist Name Unavailable";
   }
   for (var i = 0; i < obj.length; i++) {
-    //if (obj[i].MEDIUM == "")
-      obj[i].MEDIUM = "Art Type Unavailable";
+    //if (obj[i].properties.MEDIUM == "")
+      obj[i].properties.MEDIUM = "Art Type Unavailable";
   }
   for (var i = 0; i < obj.length; i++) {
-    if (obj[i].summary == "")
-      obj[i].summary = obj[i].Descriptn;
-    if (obj[i].summary == "")
-      obj[i].summary = "Summary Unavailable";
-    while(obj[i].summary.search('\"') != -1)
-      obj[i].summary = obj[i].summary.slice(0, obj[i].summary.search('\"')) + '\'' + obj[i].summary.slice(obj[i].summary.search('\"') + 1, obj[i].summary.length);
+    if (obj[i].properties.summary == "")
+      obj[i].properties.summary = obj[i].properties.Descriptn;
+    if (obj[i].properties.summary == "")
+      obj[i].properties.summary = "Summary Unavailable";
+    while(obj[i].properties.summary.search('\"') != -1)
+      obj[i].properties.summary = obj[i].properties.summary.slice(0, obj[i].properties.summary.search('\"')) + '\'' + obj[i].properties.summary.slice(obj[i].properties.summary.search('\"') + 1, obj[i].properties.summary.length);
   }
   for (var i = 0; i < obj.length; i++) {
-    if (obj[i].Descriptn == "")
-      obj[i].Descriptn = "Description Unavailable";
-      while(obj[i].Descriptn.search('\"') != -1)
-        obj[i].Descriptn = obj[i].Descriptn.slice(0, obj[i].Descriptn.search('\"')) + '\'' + obj[i].Descriptn.slice(obj[i].Descriptn.search('\"') + 1, obj[i].Descriptn.length);
-      while(obj[i].Descriptn.search('\n') != -1)
-        obj[i].Descriptn = obj[i].Descriptn.slice(0, obj[i].Descriptn.search('\n')) + ' ' + obj[i].Descriptn.slice(obj[i].Descriptn.search('\n') + 1, obj[i].Descriptn.length);
-      while(obj[i].Descriptn.search('\r') != -1)
-        obj[i].Descriptn = obj[i].Descriptn.slice(0, obj[i].Descriptn.search('\r')) + obj[i].Descriptn.slice(obj[i].Descriptn.search('\r') + 1, obj[i].Descriptn.length);
+    if (obj[i].properties.Descriptn == "")
+      obj[i].properties.Descriptn = "Description Unavailable";
+      while(obj[i].properties.Descriptn.search('\"') != -1)
+        obj[i].properties.Descriptn = obj[i].properties.Descriptn.slice(0, obj[i].properties.Descriptn.search('\"')) + '\'' + obj[i].properties.Descriptn.slice(obj[i].properties.Descriptn.search('\"') + 1, obj[i].properties.Descriptn.length);
+      while(obj[i].properties.Descriptn.search('\n') != -1)
+        obj[i].properties.Descriptn = obj[i].properties.Descriptn.slice(0, obj[i].properties.Descriptn.search('\n')) + ' ' + obj[i].properties.Descriptn.slice(obj[i].properties.Descriptn.search('\n') + 1, obj[i].properties.Descriptn.length);
+      while(obj[i].properties.Descriptn.search('\r') != -1)
+        obj[i].properties.Descriptn = obj[i].properties.Descriptn.slice(0, obj[i].properties.Descriptn.search('\r')) + obj[i].properties.Descriptn.slice(obj[i].properties.Descriptn.search('\r') + 1, obj[i].properties.Descriptn.length);
   }
 
   for (var i = 0; i < obj.length; i++) {
-    if (obj[i].Address == "")
-    obj[i].Address = "Address Unavailable";
+    if (obj[i].properties.Address == "")
+    obj[i].properties.Address = "Address Unavailable";
   }
 
   /*Writing Loop*/
@@ -66,7 +67,7 @@ function handleFile(err, data) {
   for (var i = 0; i < obj.length; i++) {
 
     /*CSV Newline Fix*/
-    if (obj[i].X == undefined) {
+    if (obj[i].properties.X == undefined) {
       while (content.slice(-1) == '\n' || content.slice(-1) == ',') {
         content = content.slice(0, -1);
       }
@@ -78,17 +79,17 @@ function handleFile(err, data) {
     + ppNL + ppTB + '"type": "Feature"'
     + ppNL + ppTB + ',"geometry": {'
     + ppNL + ppTB + ppTB + '"type": "Point"'
-    + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].Y + ', ' + obj[i].X + ']'
+    + ppNL + ppTB + ppTB + ',"coordinates": ' + '[' + obj[i].properties.Y + ', ' + obj[i].properties.X + ']'
     + ppNL + ppTB + '}'
     + ppNL + ppTB + ',"properties": ';
 
     content += '{'
-    + ppNL + ppTB + ppTB + '"nm": "' + obj[i].Name + '"'
-    + ppNL + ppTB + ppTB + ',' + '"aNm": "' + obj[i].ARTIST_NAME + '"'
-    + ppNL + ppTB + ppTB + ',' + '"type": "' + obj[i].MEDIUM + '"'
-    + ppNL + ppTB + ppTB + ',' + '"summ": "' + obj[i].summary + '"'
-    + ppNL + ppTB + ppTB + ',' + '"desc": "' + obj[i].Descriptn + '"'
-    + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].Address + '"'
+    + ppNL + ppTB + ppTB + '"nm": "' + obj[i].properties.Name + '"'
+    + ppNL + ppTB + ppTB + ',' + '"aNm": "' + obj[i].properties.ARTIST_NAME + '"'
+    + ppNL + ppTB + ppTB + ',' + '"type": "' + obj[i].properties.MEDIUM + '"'
+    + ppNL + ppTB + ppTB + ',' + '"summ": "' + obj[i].properties.summary + '"'
+    + ppNL + ppTB + ppTB + ',' + '"desc": "' + obj[i].properties.Descriptn + '"'
+    + ppNL + ppTB + ppTB + ',' + '"adr": "' + obj[i].properties.Address + '"'
     + ppNL + ppTB + '}'
     + ppNL + '}';
 
