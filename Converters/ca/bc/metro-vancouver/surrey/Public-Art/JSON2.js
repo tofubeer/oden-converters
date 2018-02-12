@@ -49,7 +49,10 @@ function convert(data)
 
         if(itemJSON.PIC_URL !== null)
         {
-            properties.image = itemJSON.PIC_URL;
+            properties.images =
+            [
+                { "image" : itemJSON.PIC_URL }
+            ]
         }
 
         if(itemJSON.ARTIST_NAME != null)

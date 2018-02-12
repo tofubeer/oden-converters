@@ -87,7 +87,7 @@ function convert(data)
 
         if(featureJSON.properties.PrimaryMaterial !== null)
         {
-            properties.primaryMaterial = featureJSON.properties.PrimaryMaterial;
+            properties.material = featureJSON.properties.PrimaryMaterial;
         }
 
         if(featureJSON.properties.URL !== null)
@@ -102,12 +102,20 @@ function convert(data)
 
         if(featureJSON.properties.PhotoURL !== null)
         {
-            properties.image = featureJSON.properties.PhotoURL;
-        }
+            properties.images = [];
 
-        if(featureJSON.properties.PhotoCredits !== null)
-        {
-            properties.imageCredit = featureJSON.properties.PhotoCredits;
+            if(featureJSON.properties.PhotoCredits !== null)
+            {
+                properties.images[0] =
+                {
+                    "image" :  featureJSON.properties.PhotoURL,
+                    "credit" : featureJSON.properties.PhotoCredits
+                }
+            }
+            else
+            {
+                properties.images[0] = { "image" : featureJSON.properties.PhotoURL };
+            }
         }
 
         const artist = artists[featureJSON.properties.Artists];
