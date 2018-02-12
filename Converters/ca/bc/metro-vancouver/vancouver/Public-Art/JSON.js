@@ -10,11 +10,11 @@ module.exports =
 
 function convert(data)
 {
-    const json = JSON.parse(data);
+    const json        = JSON.parse(data);
     const artistsJSON = json[0].features;
     const worksJSON   = json[1].features;
 
-    const converted = {};
+    const converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
 
@@ -49,8 +49,8 @@ function convert(data)
         feature.type       = "Feature";
         feature.geometry   = geometry;
         feature.properties = properties;
-        geometry.type      = "Point";
 
+        geometry.type      = "Point";
         var lat = featureJSON.properties.Latitude;
         var lng = featureJSON.properties.Longitude;
 
