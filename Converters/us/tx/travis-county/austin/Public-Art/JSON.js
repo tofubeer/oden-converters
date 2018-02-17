@@ -40,7 +40,7 @@ function convert(data)
 
         if(itemJSON.art_location_street_address !== null)
         {
-            properties.address = itemJSON.lart_location_street_address;
+            properties.address = itemJSON.art_location_street_address;
         }
 
         if(itemJSON.images !== null)
