@@ -29,11 +29,7 @@ function convert(data)
         feature.properties   = properties;
 
         geometry.type        = "Point";
-        geometry.coordinates =
-            [
-                Number(itemJSON.location.longitude),
-                Number(itemJSON.location.latitude)
-            ];
+        geometry.coordinates = itemJSON.location.coordinates;
 
         properties.name = itemJSON.art_title;
 
@@ -44,7 +40,7 @@ function convert(data)
 
         if(itemJSON.art_location_street_address !== null)
         {
-            properties.address = itemJSON.art_location_street_address;
+            properties.address = itemJSON.lart_location_street_address;
         }
 
         if(itemJSON.images !== null)
