@@ -24,8 +24,11 @@ function convert(data)
         feature.type           = "Feature";
         feature.geometry       = featuresJSON[i].geometry;
         feature.properties     = properties
-        properties.location        = featuresJSON[i].properties.PED_LOC;
-        properties.type = featuresJSON[i].properties.PED_TYPE;
+        properties.streetName        = featuresJSON[i].properties.Street_Name;
+        properties.fromStreet = featuresJSON[i].properties.From_Street;
+        properties.toStreet        = featuresJSON[i].properties.To_Street;
+        properties.volume = featuresJSON[i].properties.Volume;
+        properties.year        = featuresJSON[i].properties.Yr;
         converted.features.push(feature)
     }
 
