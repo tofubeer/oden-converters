@@ -23,7 +23,6 @@ function convert(data)
 
         feature.type             = "Feature";
         feature.geometry         = featuresJSON[i].geometry;
-        feature.properties       = properties
         properties.onStreet      = featuresJSON[i].properties.ONSTREET;
         properties.crossStreet   = featuresJSON[i].properties.ATSTREET;
         properties.busStopNumber = featuresJSON[i].properties.BUSSTOPNUM;
@@ -31,6 +30,8 @@ function convert(data)
         properties.cityName      = featuresJSON[i].properties.CITY_NAME;
         properties.accessible    = featuresJSON[i].properties.ACCESSIBLE;
         properties.status        = featuresJSON[i].properties.STATUS;
+        feature.properties       = properties
+
         converted.features.push(feature)
     }
 

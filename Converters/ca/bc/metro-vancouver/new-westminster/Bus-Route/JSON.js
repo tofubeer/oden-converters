@@ -23,9 +23,9 @@ function convert(data)
 
         feature.type           = "Feature";
         feature.geometry       = featuresJSON[i].geometry;
-        feature.properties     = properties
         properties.length      = featuresJSON[i].properties.LENGTH;
         properties.lineNumber  = featuresJSON[i].properties.LINEABBR;
+        feature.properties     = properties
 
         converted.features.push(feature)
     }

@@ -21,11 +21,12 @@ function convert(data)
         var feature = {}
         var properties = {}
 
-        feature.type           = "Feature";
-        feature.geometry       = featuresJSON[i].geometry;
-        feature.properties     = properties
-        properties.speed        = featuresJSON[i].properties.Speed;
+        feature.type          = "Feature";
+        feature.geometry      = featuresJSON[i].geometry;
+        feature.properties    = properties
+        properties.speed      = featuresJSON[i].properties.Speed;
         properties.decription = featuresJSON[i].properties.Sign_Definition;
+
         converted.features.push(feature)
     }
 
