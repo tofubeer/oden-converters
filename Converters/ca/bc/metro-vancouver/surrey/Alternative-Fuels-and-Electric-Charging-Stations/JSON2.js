@@ -18,7 +18,7 @@ function convert(data)
 
     for (var i = 0; i < json.length; i++)
     {
-        const itemJSON = json[i];
+        const featureJSON = json[i];
 
         var feature    = {};
         var geometry   = {};
