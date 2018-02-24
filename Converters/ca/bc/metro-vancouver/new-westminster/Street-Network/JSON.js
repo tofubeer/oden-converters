@@ -21,15 +21,15 @@ function convert(data)
         var feature = {}
         var properties = {}
 
-        feature.type           = "Feature";
-        feature.geometry       = featuresJSON[i].geometry;
-        feature.properties     = properties
-        properties.id        = featuresJSON[i].properties.OBJECTID;
+        feature.type            = "Feature";
+        feature.geometry        = featuresJSON[i].geometry;
+        feature.properties      = properties
+        properties.id           = featuresJSON[i].properties.OBJECTID;
         properties.streetNumber = featuresJSON[i].properties.BLOCK_NUM;
-        properties.streetName        = featuresJSON[i].properties.STREET_NAM;
-        properties.streetTo = featuresJSON[i].properties.TO_;
-        properties.streetFrom        = featuresJSON[i].properties.FROM_;
-        properties.length = featuresJSON[i].properties.Shape.len;
+        properties.streetName   = featuresJSON[i].properties.STREET_NAM;
+        properties.streetTo     = featuresJSON[i].properties.TO_;
+        properties.streetFrom   = featuresJSON[i].properties.FROM_;
+        properties.length       = featuresJSON[i].properties["Shape.len"];
         converted.features.push(feature)
     }
 
