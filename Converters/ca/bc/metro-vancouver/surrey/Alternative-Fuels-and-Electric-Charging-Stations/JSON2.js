@@ -31,8 +31,8 @@ function convert(data)
         geometry.type        = "Point";
         geometry.coordinates =
         [
-            itemJSON.LONGITUDE,
-            itemJSON.LATITUDE
+            featureJSON.LONGITUDE,
+            featureJSON.LATITUDE
         ];
 
         properties.name    = featureJSON.properties.NAME
