@@ -16,18 +16,18 @@ function convert(data)
 
     var featuresJSON = json["features"];
 
-    for(var i = 0; i < json.length; i++)
+    for(var i = 0; i < featuresJSON.length; i++)
     {
         var feature = {}
         var properties = {}
 
         feature.type            = "Feature";
-        feature.geometry        = json[i].json_geometry;
+        feature.geometry        = featuresJSON[i].json_geometry;
         feature.properties      = properties
-        properties.name         = json[i].Name;
-        properties.fullName     = json[i].FullName;
-        properties.length       = json[i].SHAPE_Length;
-        properties.id           = json[i].OBJECTID;
+        properties.name         = featuresJSON[i].Name;
+        properties.fullName     = featuresJSON[i].FullName;
+        properties.length       = featuresJSON[i].SHAPE_Length;
+        properties.id           = featuresJSON[i].OBJECTID;
 
         converted.features.push(feature)
     }

@@ -24,8 +24,8 @@ function convert(data)
         feature.type           = "Feature";
         feature.geometry       = featuresJSON[i].geometry;
         feature.properties     = properties
-        properties.location        = featuresJSON[i].properties.PED_LOC;
-        properties.type = featuresJSON[i].properties.PED_TYPE;
+        properties.location    = featuresJSON[i].properties.PED_LOC;
+        properties.type        = featuresJSON[i].properties.PED_TYPE;
         converted.features.push(feature)
     }
 
