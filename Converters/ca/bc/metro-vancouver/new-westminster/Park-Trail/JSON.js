@@ -1,6 +1,6 @@
 module.exports =
     {
-        doConversion: function(data)
+        doConvert: function(data)
         {
             return convert(data);
         }
