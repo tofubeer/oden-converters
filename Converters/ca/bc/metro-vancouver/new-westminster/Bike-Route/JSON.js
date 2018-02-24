@@ -22,15 +22,15 @@ function convert(data)
         var properties = {}
 
         feature.type           = "Feature";
-        feature.geometry       = featuresJSON[i].json_geometry;
+        feature.geometry       = featuresJSON[i].geometry;
         feature.properties     = properties
-        properties.status      = featuresJSON[i].Status;
-        properties.paved       = featuresJSON[i].Paved;
-        properties.name        = featuresJSON[i].Name;
-        properties.onStreet    = featuresJSON[i].Bike_OnStreet;
-        properties.offStreet   = featuresJSON[i].Bike_OffStreet;
-        properties.lane        = featuresJSON[i].Bike_Lane;
-        properties.distance    = featuresJSON[i].Distance;
+        properties.status      = featuresJSON[i].properties.Status;
+        properties.paved       = featuresJSON[i].properties.Paved;
+        properties.name        = featuresJSON[i].properties.Name;
+        properties.onStreet    = featuresJSON[i].properties.Bike_OnStreet;
+        properties.offStreet   = featuresJSON[i].properties.Bike_OffStreet;
+        properties.lane        = featuresJSON[i].properties.Bike_Lane;
+        properties.distance    = featuresJSON[i].properties.Distance;
         converted.features.push(feature)
     }
 

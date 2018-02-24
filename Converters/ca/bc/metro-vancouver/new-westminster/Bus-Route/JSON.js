@@ -22,10 +22,10 @@ function convert(data)
         var properties = {}
 
         feature.type           = "Feature";
-        feature.geometry       = featuresJSON[i].json_geometry;
+        feature.geometry       = featuresJSON[i].geometry;
         feature.properties     = properties
-        properties.length      = featuresJSON[i].LENGTH;
-        properties.lineNumber  = featuresJSON[i].LINEABBR;
+        properties.length      = featuresJSON[i].properties.LENGTH;
+        properties.lineNumber  = featuresJSON[i].properties.LINEABBR;
 
         converted.features.push(feature)
     }

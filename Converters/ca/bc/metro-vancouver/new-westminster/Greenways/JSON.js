@@ -22,12 +22,12 @@ function convert(data)
         var properties = {}
 
         feature.type            = "Feature";
-        feature.geometry        = featuresJSON[i].json_geometry;
+        feature.geometry        = featuresJSON[i].geometry;
         feature.properties      = properties
-        properties.name         = featuresJSON[i].Name;
-        properties.fullName     = featuresJSON[i].FullName;
-        properties.length       = featuresJSON[i].SHAPE_Length;
-        properties.id           = featuresJSON[i].OBJECTID;
+        properties.name         = featuresJSON[i].properties.Name;
+        properties.fullName     = featuresJSON[i].properties.FullName;
+        properties.length       = featuresJSON[i].properties.SHAPE_Length;
+        properties.id           = featuresJSON[i].properties.OBJECTID;
 
         converted.features.push(feature)
     }

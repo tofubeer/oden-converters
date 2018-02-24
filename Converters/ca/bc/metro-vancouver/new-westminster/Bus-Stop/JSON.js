@@ -16,21 +16,21 @@ function convert(data)
 
     var featuresJSON = json["features"];
 
-    for(var i = 0; i < json.length; i++)
+    for(var i = 0; i < featuresJSON.length; i++)
     {
         var feature = {}
         var properties = {}
 
-        feature.type           = "Feature";
-        feature.geometry       = json[i].json_geometry;
-        feature.properties     = properties
-        properties.onStreet      = json[i].ONSTREET;
-        properties.crossStreet       = json[i].ATSTREET;
-        properties.busStopNumber        = json[i].BUSSTOPNUM;
-        properties.direction    = json[i].DIRECTION;
-        properties.cityName   = json[i].CITY_NAME;
-        properties.accessible        = json[i].ACCESSIBLE;
-        properties.status    = json[i].STATUS;
+        feature.type             = "Feature";
+        feature.geometry         = featuresJSON[i].geometry;
+        feature.properties       = properties
+        properties.onStreet      = featuresJSON[i].properties.ONSTREET;
+        properties.crossStreet   = featuresJSON[i].properties.ATSTREET;
+        properties.busStopNumber = featuresJSON[i].properties.BUSSTOPNUM;
+        properties.direction     = featuresJSON[i].properties.DIRECTION;
+        properties.cityName      = featuresJSON[i].properties.CITY_NAME;
+        properties.accessible    = featuresJSON[i].properties.ACCESSIBLE;
+        properties.status        = featuresJSON[i].properties.STATUS;
         converted.features.push(feature)
     }
 
