@@ -35,10 +35,10 @@ function convert(data)
             featureJSON.LATITUDE
         ];
 
-        properties.name    = featureJSON.properties.NAME
-        properties.type    = featureJSON.properties.FUEL
-        properties.address = featureJSON.properties.LOCATION
-        properties.access  = featureJSON.properties.ACCESS
+        properties.name    = featureJSON.NAME
+        properties.type    = featureJSON.FUEL
+        properties.address = featureJSON.LOCATION
+        properties.access  = featureJSON.ACCESS
 
         converted.features.push(feature)
     }
