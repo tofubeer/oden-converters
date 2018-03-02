@@ -35,7 +35,7 @@ function convert(data)
                 Number(itemJSON.latitude)
             ];
 
-        properties.name = itemJSON.art_title;
+        properties.name = itemJSON.title;
 
         if(itemJSON.description !== null)
         {
@@ -64,7 +64,7 @@ function convert(data)
 
         if(itemJSON.imagefile !== null)
         {
-            properties.images = []
+            properties.images = [];
             properties.images.push({ "image" : itemJSON.imagefile });
         }
 
