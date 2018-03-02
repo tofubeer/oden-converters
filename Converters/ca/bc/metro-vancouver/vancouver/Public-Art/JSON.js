@@ -88,7 +88,7 @@ function convert(data)
 
         if(featureJSON.properties.Type !== null)
         {
-            properties.type = featureJSON.properties.Type;
+            properties.medium = featureJSON.properties.Type;
         }
 
         if(featureJSON.properties.PrimaryMaterial !== null)

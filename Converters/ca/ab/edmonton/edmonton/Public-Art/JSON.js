@@ -50,7 +50,7 @@ function convert(data)
 
         if(featureJSON.properties.medium !== null)
         {
-            properties.type = featureJSON.properties.medium;
+            properties.medium = featureJSON.properties.medium;
         }
 
         if(featureJSON.properties.material !== null)
