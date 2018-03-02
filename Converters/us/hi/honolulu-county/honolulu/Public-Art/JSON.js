@@ -35,6 +35,11 @@ function convert(data)
                 Number(itemJSON.latitude)
             ];
 
+        if(itemJSON.title === null)
+        {
+            continue;
+        }
+
         properties.name = itemJSON.title;
 
         if(itemJSON.description !== null)
