@@ -82,7 +82,7 @@ function convert(data)
 
         if(images.length > 0)
         {
-            properties.imaages = images;
+            properties.images = images;
         }
 
         if(featureJSON.properties.PhotoCredits !== null)
