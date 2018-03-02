@@ -59,7 +59,7 @@ function convert(data)
 
         if(featureJSON.properties.installation_address !== null)
         {
-            properties.addresss = featureJSON.properties.installation_address;
+            properties.address = featureJSON.properties.installation_address;
         }
 
         const images = []

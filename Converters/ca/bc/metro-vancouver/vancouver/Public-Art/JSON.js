@@ -97,7 +97,7 @@ function convert(data)
 
         if(featureJSON.properties.SiteAddress !== null)
         {
-            properties.addresss = featureJSON.properties.SiteAddress;
+            properties.address = featureJSON.properties.SiteAddress;
         }
 
         if(featureJSON.properties.PhotoURL !== null)

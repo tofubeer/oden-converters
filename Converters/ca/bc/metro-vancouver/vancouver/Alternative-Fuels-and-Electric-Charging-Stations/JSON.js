@@ -47,8 +47,8 @@ function convert(data)
                 lat
             ];
 
-        properties.name     = featureJSON.properties.LOT_OPERATOR;
-        properties.addresss = featureJSON.properties.ADDRESS;
+        properties.name    = featureJSON.properties.LOT_OPERATOR;
+        properties.address = featureJSON.properties.ADDRESS;
 
         converted.features.push(feature)
     }
