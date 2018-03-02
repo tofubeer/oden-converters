@@ -39,7 +39,7 @@ function convert(data)
 
         if(itemJSON.description !== null)
         {
-            properties.description = itemJSON.description;
+            properties.summary = itemJSON.description;
         }
 
         if(itemJSON.web_detail_page !== null)

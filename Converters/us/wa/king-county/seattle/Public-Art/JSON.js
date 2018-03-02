@@ -32,7 +32,7 @@ function convert(data)
 
         if(itemJSON.description !== null)
         {
-            properties.description = itemJSON.description;
+            properties.summary = itemJSON.description;
         }
 
         if(itemJSON.address !== null)

@@ -35,7 +35,7 @@ function convert(data)
 
         if(featureJSON.properties.Descriptn !== null)
         {
-            properties.description  = featureJSON.properties.Descriptn;
+            properties.summary  = featureJSON.properties.Descriptn;
         }
 
         if(featureJSON.properties.website !== "")

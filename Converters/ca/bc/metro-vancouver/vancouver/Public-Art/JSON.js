@@ -78,7 +78,7 @@ function convert(data)
 
         if(featureJSON.properties.DescriptionOfwork != null)
         {
-            properties.description = featureJSON.properties.DescriptionOfwork;
+            properties.summary = featureJSON.properties.DescriptionOfwork;
         }
 
         if(featureJSON.properties.YearOfInstallation != null)
