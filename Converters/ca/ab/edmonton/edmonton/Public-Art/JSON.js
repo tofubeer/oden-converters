@@ -35,7 +35,7 @@ function convert(data)
 
         if(featureJSON.properties.description != null)
         {
-            properties.description = featureJSON.properties.description;
+            properties.summary = featureJSON.properties.description;
         }
 
         if(featureJSON.properties.at_a_glance)
