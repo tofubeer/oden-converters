@@ -8,11 +8,11 @@
 
 function convert(data)
 {
-    const json         = JSON.parse(data);
+    var json           = JSON.parse(data);
     var converted      = {};
 
     converted.type     = "FeatureCollection";
     converted.features = [];
-    
+
     return JSON.stringify(converted, null, 4);
 }
