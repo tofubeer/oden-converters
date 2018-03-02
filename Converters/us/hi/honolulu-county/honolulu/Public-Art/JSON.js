@@ -59,7 +59,7 @@ function convert(data)
 
         if(itemJSON.year !== null)
         {
-            properties.address = itemJSON.year;
+            properties.year = itemJSON.year;
         }
 
         if(itemJSON.imagefile !== null)
