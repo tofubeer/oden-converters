@@ -8,7 +8,13 @@ module.exports =
 
 function convert(data)
 {
-    var json      = JSON.parse(data);
+    var json = data;
+
+    if(data instanceof String)
+    {
+        json = JSON.parse(data)
+    }
+
     var converted = {}
 
     converted.type     = "FeatureCollection";

@@ -10,7 +10,13 @@ module.exports =
 
 function convert(data)
 {
-    const json         = JSON.parse(data);
+    var json = data;
+
+    if(data instanceof String)
+    {
+        json = JSON.parse(data)
+    }
+
     const featuresJSON = json.features;
 
     const converted    = {};
