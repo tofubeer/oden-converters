@@ -10,7 +10,7 @@ function convert(data)
 {
     var json = data;
 
-    if(data instanceof String)
+    if(typeof(data) === 'string' || data instanceof String)
     {
         json = JSON.parse(data)
     }
