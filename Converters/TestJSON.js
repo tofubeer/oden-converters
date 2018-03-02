@@ -8,5 +8,12 @@
 
 function convert(data)
 {
-    return typeof data;
+    var objData = data;
+
+    if(data instanceof String)
+    {
+        objData = JSON.parse(data)
+    }
+
+    return JSON.stringify(objData, null, 4);
 }
