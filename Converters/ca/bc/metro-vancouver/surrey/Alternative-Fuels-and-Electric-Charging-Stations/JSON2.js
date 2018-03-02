@@ -15,9 +15,6 @@ function convert(data)
         json = JSON.parse(data)
     }
 
-    const artistsJSON = json[0].features;
-    const worksJSON   = json[1].features;
-
     const converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
