@@ -37,6 +37,11 @@ function convert(data)
     {
         const itemJSON = json[i];
 
+        if(itemJSON.location == null)
+        {
+            continue;
+        }
+
         var feature    = {};
         var geometry   = {};
         var properties = {};
@@ -48,29 +53,29 @@ function convert(data)
         geometry.type        = "Point";
         geometry.coordinates = itemJSON.location.coordinates;
 
-        properties.name = itemJSON.art_title;
+        properties.name = itemJSON.artwork_title;
 
-        if(itemJSON.web_detail_page !== null)
+        if(itemJSON.material !== null)
         {
-            properties.website = itemJSON.web_detail_page;
+            properties.material = itemJSON.material;
         }
 
-        if(itemJSON.art_location_street_address !== null)
+
+        if(itemJSON.web_page !== null)
         {
-            properties.address = itemJSON.art_location_street_address;
+            properties.website = itemJSON.web_page;
         }
 
-        if(itemJSON.images !== null)
+        if(itemJSON.location_street_address !== null)
         {
-            properties.images = [];
-            properties.images.push({ "image" : itemJSON.images });
+            properties.address = itemJSON.location_street_address;
         }
 
-        if(itemJSON.artist_full_name != null)
+        if(itemJSON.artist != null)
         {
             var artist = {};
 
-            artist.name = itemJSON.artist_full_name;
+            artist.name = itemJSON.artist;
         }
 
         converted.features.push(feature)
