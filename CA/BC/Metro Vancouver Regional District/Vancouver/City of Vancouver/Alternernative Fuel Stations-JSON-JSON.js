@@ -31,15 +31,15 @@ function convert(data)
         json = JSON.parse(data)
     }
 
-    const featuresJSON = json.features;
+    var featuresJSON = json.features;
 
-    const converted    = {};
+    var converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
 
     for (i = 0; i < featuresJSON.length; i++)
     {
-        const featureJSON = featuresJSON[i];
+        var featureJSON = featuresJSON[i];
 
         var feature    = {};
         var geometry   = {};
@@ -55,7 +55,7 @@ function convert(data)
 
         if(lat == null || lng == null)
         {
-            const latLong = utmToLatLng(10, featureJSON.geometry.coordinates[0], featureJSON.geometry.coordinates[1], true);
+            var latLong = utmToLatLng(10, featureJSON.geometry.coordinates[0], featureJSON.geometry.coordinates[1], true);
 
             lat = latLong.latitude;
             lng = latLong.longitude

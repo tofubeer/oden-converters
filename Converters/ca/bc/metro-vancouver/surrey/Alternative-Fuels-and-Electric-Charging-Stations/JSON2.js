@@ -15,13 +15,13 @@ function convert(data)
         json = JSON.parse(data)
     }
 
-    const converted    = {};
+    var converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
 
     for (var i = 0; i < json.length; i++)
     {
-        const featureJSON = json[i];
+        var featureJSON = json[i];
 
         var feature    = {};
         var geometry   = {};
@@ -38,10 +38,10 @@ function convert(data)
             featureJSON.LATITUDE
         ];
 
-        properties.name    = featureJSON.NAME
-        properties.type    = featureJSON.FUEL
-        properties.address = featureJSON.LOCATION
-        properties.access  = featureJSON.ACCESS
+        properties.name    = featureJSON.NAME;
+        properties.type    = featureJSON.FUEL;
+        properties.address = featureJSON.LOCATION;
+        properties.access  = featureJSON.ACCESS;
 
         converted.features.push(feature)
     }

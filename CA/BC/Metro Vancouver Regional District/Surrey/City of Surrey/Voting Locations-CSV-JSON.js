@@ -32,14 +32,14 @@ function convert(data)
     // Skip first line, it is titles
     for(var i = 1;i < lines.length;i++)
     {
-        const line = lines[i];
+        var line = lines[i];
 
         if(line.length === 0)
         {
             continue;
         }
 
-        const fields = line.split(',');
+        var fields = line.split(',');
 
         var feature       = {};
         var geometry      = {};

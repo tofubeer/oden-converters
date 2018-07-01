@@ -38,7 +38,7 @@ function convert(data)
 
     for(var i = 0; i < featuresJSON.length; i++)
     {
-        const featureJSON = featuresJSON[i];
+        var featureJSON = featuresJSON[i];
         var feature       = {};
         var geometry      = {};
         var properties    = {};
@@ -47,7 +47,7 @@ function convert(data)
         feature.geometry   = geometry;
         feature.properties = properties;
 
-        const latLong        = utmToLatLng(10, featureJSON.properties.X, featureJSON.properties.Y, true);
+        var latLong        = utmToLatLng(10, featureJSON.properties.X, featureJSON.properties.Y, true);
 
         geometry.type        = "Point";
         geometry.coordinates =

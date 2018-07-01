@@ -1,5 +1,3 @@
-// https://stackoverflow.com/questions/343865/how-to-convert-from-utm-to-latlng-in-python-or-javascript
-
 module.exports =
     {
         doConvert: function(data)
@@ -17,13 +15,13 @@ function convert(data)
         json = JSON.parse(data)
     }
 
-    const converted    = {};
+    var converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
 
     for (i = 0; i < json.length; i++)
     {
-        const itemJSON = json[i];
+        var itemJSON = json[i];
 
         var feature    = {};
         var geometry   = {};
@@ -50,7 +48,7 @@ function convert(data)
 
         if(itemJSON.images !== null)
         {
-            properties.images = []
+            properties.images = [];
             properties.images.push({ "image" : itemJSON.images });
         }
 

@@ -24,7 +24,7 @@ function convert(data)
 
     for(var i = 0; i < featuresJSON.length; i++)
     {
-        const featureJSON = featuresJSON[i];
+        var featureJSON = featuresJSON[i];
         var feature       = {};
         var properties    = {};
 
@@ -68,7 +68,7 @@ function convert(data)
             properties.address = featureJSON.properties.installation_address;
         }
 
-        const images = []
+        var images = [];
 
         if(featureJSON.properties.image_01 !== null)
         {

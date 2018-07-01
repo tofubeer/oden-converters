@@ -17,25 +17,25 @@ function convert(data)
         json = JSON.parse(data)
     }
 
-    const artistsJSON = json[0].features;
-    const worksJSON   = json[1].features;
+    var artistsJSON = json[0].features;
+    var worksJSON   = json[1].features;
 
-    const converted    = {};
+    var converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
 
-    const artists = {};
+    var artists = {};
 
     for (var i = 0; i < artistsJSON.length; i++)
     {
-        const featureJSON = artistsJSON[i];
+        var featureJSON = artistsJSON[i];
 
         artists[featureJSON.properties.ARTISTID.toString()] = featureJSON.properties;
     }
 
     for (i = 0; i < worksJSON.length; i++)
     {
-        const featureJSON = worksJSON[i];
+        var featureJSON = worksJSON[i];
 
         if(featureJSON.properties.Status === "Removed")
         {
@@ -62,7 +62,7 @@ function convert(data)
 
         if(lat == null || lng == null)
         {
-            const latLong = utmToLatLng(10, featureJSON.geometry.coordinates[0], featureJSON.geometry.coordinates[1], true);
+            var latLong = utmToLatLng(10, featureJSON.geometry.coordinates[0], featureJSON.geometry.coordinates[1], true);
 
             lat = latLong.latitude;
             lng = latLong.longitude
@@ -124,7 +124,7 @@ function convert(data)
             }
         }
 
-        const artist = artists[featureJSON.properties.Artists];
+        var artist = artists[featureJSON.properties.Artists];
 
         if(artist != null)
         {

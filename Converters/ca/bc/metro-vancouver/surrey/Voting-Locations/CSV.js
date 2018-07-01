@@ -18,14 +18,14 @@ function convert(data)
     // Skip first line, it is titles
     for(var i = 1;i < lines.length;i++)
     {
-        const line = lines[i];
+        var line = lines[i];
 
-        if(line.length == 0)
+        if(line.length === 0)
         {
             continue;
         }
 
-        const fields = line.split(',');
+        var fields = line.split(',');
 
         var feature       = {};
         var geometry      = {};
@@ -40,7 +40,7 @@ function convert(data)
         [
             parseFloat(fields[4]),
             parseFloat(fields[5])
-        ]
+        ];
 
         properties.name = fields[0];
         properties.address = fields[1];

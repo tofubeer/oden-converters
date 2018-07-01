@@ -17,16 +17,15 @@ function convert(data)
         json = JSON.parse(data)
     }
 
-    const converted    = {};
+    var converted    = {};
     converted.type     = "FeatureCollection";
     converted.features = [];
 
     for (i = 0; i < json.length; i++)
     {
-        const itemJSON = json[i];
+        var itemJSON = json[i];
 
         var feature    = {};
-        var geometry   = {};
         var properties = {};
 
         feature.type         = "Feature";
